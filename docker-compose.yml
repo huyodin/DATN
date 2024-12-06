@@ -60,6 +60,15 @@ services:
         depends_on:
             - mysql
 
+    node:
+        image: node:20-alpine
+        working_dir: /var/www/html
+        volumes:
+            - '.:/var/www/html'
+        command: sh -c "npm install && tail -f /dev/null"
+        networks:
+            - sail
+
 networks:
     sail:
         driver: bridge
