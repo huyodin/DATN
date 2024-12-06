@@ -30,30 +30,12 @@
         <div class="row">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                    <p><i class="fa fa-envelope mr-2"></i>huyodin@gmail.com</p>
                     <p class="text-body px-3">|</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>0987 368 999</p>
                 </div>
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-primary pl-3" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -65,7 +47,7 @@
     <div class="container-lg position-relative p-0" style="z-index: 9;">
         <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
             <a href="{{ route('index') }}" class="navbar-brand">
-                <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>.PRO</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -119,7 +101,7 @@
     <div class="row pt-5">
         <div class="col-lg-3 col-md-6 mb-5">
             <a href="" class="navbar-brand">
-                <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                <h1 class="text-primary"><span class="text-white">TRAVEL</span>.PRO</h1>
             </a>
             <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
             <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
@@ -156,9 +138,9 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-            <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-            <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-            <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+            <p><i class="fa fa-map-marker-alt mr-2"></i>Đại Học Thuỷ Lợi, Đống Đa, Hà Nội</p>
+            <p><i class="fa fa-phone-alt mr-2"></i>0987 368 999</p>
+            <p><i class="fa fa-envelope mr-2"></i>huyodin@gamil.com</p>
             <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
             <div class="w-100">
                 <div class="input-group">
