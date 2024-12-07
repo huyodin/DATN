@@ -18,6 +18,7 @@ mix.js('resources/js/main.js', 'public/js')
     ])
     .copy('resources/img', 'public/img') // Sao chép tất cả hình ảnh từ resources/img vào public/img
     .copy('resources/lib', 'public/lib') // Sao chép tất cả hình ảnh từ resources/img vào public/img
+    .copy('resources/airline_ticket', 'public/airline_ticket') // Sao chép tất cả hình ảnh từ resources/img vào public/img
     .webpackConfig({
         resolve: {
             alias: {

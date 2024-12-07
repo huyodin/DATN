@@ -10,14 +10,14 @@
                         <h3>{{ __('Đăng ký tài khoản') }}</h3>
                     </div>
 
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('registerAction') }}">
                         @csrf
 
                         <div class="mb-4">
                             <label for="name" class="form-label">Tên</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                             @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 

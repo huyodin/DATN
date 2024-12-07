@@ -1,19 +1,19 @@
 @extends('layout.app_user')
 
 @section('content')
-<div class="container-lg mt-5 bg-white p-4">
-    <h1 class="mb-4">Danh Sách Tài Xế</h1>
-    <a href="{{ route('admin.drivers.create') }}" class="btn btn-tour mb-3">Thêm Tài Xế</a>
-    <table class="table table-bordered">
-        <thead>
+    <div class="container-lg mt-5 bg-white p-4 shadow-sm rounded">
+        <h1 class="text-center text-primary mb-4">Danh Sách Tài Xế</h1>
+        <a href="{{ route('admin.drivers.create') }}" class="btn btn-tour mb-3 px-4 py-2" style="background-color: #28a745; color: white; padding: 10px 20px;">Thêm Tài Xế</a>
+        <table class="table table-bordered">
+            <thead class="thead-light">
             <tr>
                 <th>Tên</th>
                 <th>Avatar</th>
                 <th>Điện Thoại</th>
                 <th>Hành Động</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach($drivers as $index => $driver)
                 <tr>
                     <td>{{ $driver->name }}</td>
@@ -26,8 +26,8 @@
                     </td>
                     <td>{{ $driver->phone }}</td>
                     <td>
-                        <a href="{{ route('admin.drivers.edit', $driver->id) }}" class="btn btn-warning">Chỉnh Sửa</a>
-                        <button type="button" class="btn btn-danger" id="showDeleteModal{{ $index }}">Xóa</button>
+                        <a href="{{ route('admin.drivers.edit', $driver->id) }}" class="btn btn-warning px-4 py-2" style="background-color: #ffc107; color: white; padding: 10px 20px;">Chỉnh Sửa</a>
+                        <button type="button" class="btn btn-danger px-4 py-2" id="showDeleteModal{{ $index }}" style="background-color: #dc3545; color: white; padding: 10px 20px;">Xóa</button>
 
                         <!-- Delete Confirmation Modal -->
                         <div class="modal fade" id="deleteConfirmationModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel{{ $index }}" aria-hidden="true">
@@ -40,8 +40,8 @@
                                         <h6 class="text-center">Bạn có chắc chắn muốn xóa tài xế này không?</h6>
                                     </div>
                                     <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" id="close{{ $index }}" data-dismiss="modal">Hủy</button>
-                                        <button type="button" class="btn btn-primary confirmDelete" data-id="{{ $index }}">Đồng ý</button>
+                                        <button type="button" class="btn btn-secondary px-4 py-2" id="close{{ $index }}" data-dismiss="modal" style="padding: 10px 20px;">Hủy</button>
+                                        <button type="button" class="btn btn-danger px-4 py-2 confirmDelete" data-id="{{ $index }}" style="background-color: #dc3545; color: white; padding: 10px 20px;">Đồng ý</button>
                                     </div>
                                 </div>
                             </div>
@@ -55,23 +55,13 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
-</div>
-<script>
-    $(document).ready(function() {
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-                toastr.error('{{ $error }}');
-            @endforeach
-        @endif
+            </tbody>
+        </table>
+    </div>
 
-        @if(session('success'))
-            toastr.success('{{ session('success') }}');
-        @endif
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-        @foreach($drivers as $index => $driver)
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @foreach($drivers as $index => $driver)
             document.getElementById(`showDeleteModal{{ $index }}`).addEventListener('click', function() {
                 $(`#deleteConfirmationModal{{ $index }}`).modal('show');
             });
@@ -84,7 +74,7 @@
             document.querySelector(`#close{{ $index }}`).addEventListener('click', function() {
                 $(`#deleteConfirmationModal{{ $index }}`).modal('hide');
             });
-        @endforeach
-    });
-</script>
+            @endforeach
+        });
+    </script>
 @endsection

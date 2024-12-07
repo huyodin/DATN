@@ -3,7 +3,6 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Customer;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,12 +45,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function customer()
-    {
-        return $this->hasOne(Customer::class);
-    }
-
     public function hasRole($role)
     {
         return $this->role === $role;

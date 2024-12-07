@@ -10,11 +10,10 @@
                         <h3>{{ __('Đặt lại mật khẩu') }}</h3>
                     </div>
 
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('ChangePasswordAction')}}">
                         @csrf
-{{--                        <input type="hidden" name="token" value="{{ $token }}">--}}
-
-{{--                        <input type="hidden" name="email" value="{{ $email }}">--}}
+                        <input type="hidden" name="email" value="{{ $data['email'] }}">
+                        <input type="hidden" name="token" value="{{ $data['token'] }}">
 
                         <div class="mb-4">
                             <label for="password" class="form-label">Mật khẩu mới</label>

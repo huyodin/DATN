@@ -11,7 +11,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">DU LỊCH VÀ TRẢI NGHIỆM</h4>
                             <h1 class="display-3 text-white mb-md-4">Hãy cùng nhau khám phá thế giới</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Đặt ngay</a>
+                            <a href="{{route('tours')}}" class="btn btn-primary py-md-3 px-md-5 mt-2">Đặt ngay</a>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">DU LỊCH VÀ TRẢI NGHIỆM</h4>
                             <h1 class="display-3 text-white mb-md-4">Khám phá những địa điểm tuyệt vời cùng chúng tôi</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Đặt ngay</a>
+                            <a href="{{route('tours')}}" class="btn btn-primary py-md-3 px-md-5 mt-2">Đặt ngay</a>
                         </div>
                     </div>
                 </div>
@@ -42,55 +42,52 @@
 
 
     <!-- Booking Start -->
-    <div class="container-fluid booking mt-5 pb-5">
-        <div class="container pb-5">
-            <div class="bg-light shadow" style="padding: 30px;">
-                <div class="row align-items-center" style="min-height: 60px;">
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Destination</option>
-                                        <option value="1">Destination 1</option>
-                                        <option value="2">Destination 1</option>
-                                        <option value="3">Destination 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+    <form action="{{ route('tours') }}" method="GET">
+        <div class="container-fluid booking mt-5 pb-5">
+            <div class="container pb-5">
+                <div class="bg-light shadow" style="padding: 30px;">
+                    <div class="row align-items-center" style="min-height: 60px;">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0 h-100">
+                                        <input name="number_of_participants" min="0" class="form-control h-100" type="number" placeholder="Số lượng người" value="{{ request()->get('number_of_participants') }}" />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <div class="date" id="date2" data-target-input="nearest">
-                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <div class="date" id="date1" data-target-input="nearest">
+                                            <input name="start_date" type="text" class="form-control p-4 datetimepicker-input" placeholder="Ngày bắt đầu" value="{{ request()->get('start_date') }}" data-target="#date1" data-toggle="datetimepicker"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Duration</option>
-                                        <option value="1">Duration 1</option>
-                                        <option value="2">Duration 1</option>
-                                        <option value="3">Duration 1</option>
-                                    </select>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <div class="date" id="date2" data-target-input="nearest">
+                                            <input name="end_date" type="text" class="form-control p-4 datetimepicker-input" placeholder="Ngày trở về" value="{{ request()->get('end_date') }}" data-target="#date2" data-toggle="datetimepicker"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0 h-100">
+                                        <select name="area" class="area form-control px-4" style="height: 47px;">
+                                            <option selected value="">Địa điểm du lịch</option>
+                                            @foreach($data['areas'] as $area)
+                                                <option value="{{ $area->id }}" {{ request()->get('area') == $area->id ? 'selected' : '' }}>{{ $area->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Tìm Kiếm</button>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Tìm Kiếm</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <!-- Booking End -->
 
 
@@ -116,7 +113,7 @@
                                 <img class="img-fluid" src="img/about-2.jpg" alt="">
                             </div>
                         </div>
-                        <a href="" class="btn btn-primary mt-1">Đặt ngay</a>
+                        <a href="{{route('tours')}}" class="btn btn-primary mt-1">Đặt ngay</a>
                     </div>
                 </div>
             </div>
@@ -176,60 +173,17 @@
                 <h1>Khám phá Top những điểm đến hàng đầu</h1>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Hà Nội</h5>
-                            <span>100 Cities</span>
-                        </a>
+                @foreach($data['areasPreview'] as $area)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2 h-100">
+                            <img class="img-fluid w-100 h-100" style="max-height: 250px" src="{{ asset('storage/' . $area->thumbnail) }}" alt="">
+                            <a class="destination-overlay text-white text-decoration-none" href="">
+                                <h5 class="text-white">{{$area->name}}</h5>
+                                <span>{{$area->tours_count}} Tours</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Thành phố Hồ Chí Minh</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Đà Nẵng</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-4.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Hội An</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-5.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Huế</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="img/destination-6.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Sapa</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -268,6 +222,15 @@
             </div>
         </div>
     </div>
-    <!-- Service End --
+    <!-- Service End -->
+@endsection
 
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('.area').select2({
+                width: '100%',
+            });
+        });
+    </script>
 @endsection

@@ -10,20 +10,14 @@
                         <h3>{{ __('Đặt lại mật khẩu') }}</h3>
                     </div>
 
-                    @if (session('status'))
-                        <div class="alert alert-success mb-4" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('ResetPasswordAction')}}">
                         @csrf
 
                         <div class="mb-4">
                             <label for="email" class="form-label">Email</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TRAVELER - Free Travel Website Template</title>
+    <title>TRAVEL.PRO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -19,8 +19,20 @@
     <link href="{{asset(env('URL_MAIN')."/lib/owlcarousel/assets/owl.carousel.min.css")}}" rel="stylesheet">
     <link href="{{asset(env('URL_MAIN')."/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css")}}" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset(env('URL_MAIN')."/css/style.css")}}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!-- Toastr CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +47,7 @@
                     <p><i class="fa fa-phone-alt mr-2"></i>0987 368 999</p>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -59,7 +71,6 @@
                     <a href="{{ route('airline_tickets') }}" class="nav-item nav-link {{ Route::is('airline_tickets') ? 'active' : '' }}">Vé máy bay</a>
                     <a href="{{ route('hotels') }}" class="nav-item nav-link {{ Route::is('hotels') ? 'active' : '' }}">Khách sạn</a>
                     @if (!Auth::check())
-                        {{--                    Chưa đăng nhập--}}
                         <div class="d-flex align-items-center">
                             <a href="{{ route('login') }}" class="nav-item nav-link {{ Route::is('login') ? 'active' : '' }}">Đăng nhập</a>
                             /
@@ -67,22 +78,22 @@
                         </div>
                     @else
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Huy Odin</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @if(Auth::user()->role !== 0)
-                                    <a href="{{ route('admin.tour.index') }}" class="dropdown-item {{ Route::is('admin.tour.index') ? 'active' : '' }}">Quản lý Tours</a>
-                                    <a href="{{ route('admin.customers.index') }}" class="dropdown-item {{ Route::is('admin.customers.index') ? 'active' : '' }}">Quản lý khách hàng</a>
+                                    <a href="{{ route('admin.tour.index') }}" class="dropdown-item {{ Route::is('admin.tour.index') ? 'active' : '' }}">Quản lý tours</a>
                                     <a href="{{ route('admin.hotels.index') }}" class="dropdown-item {{ Route::is('admin.hotels.index') ? 'active' : '' }}">Quản lý khách sạn</a>
                                     <a href="{{ route('admin.tour_guides.index') }}" class="dropdown-item {{ Route::is('admin.tour_guides.index') ? 'active' : '' }}">Quản lý hướng dẫn viên</a>
                                     <a href="{{ route('admin.vehicles.index') }}" class="dropdown-item {{ Route::is('admin.vehicles.index') ? 'active' : '' }}">Quản lý phương tiện</a>
                                     <a href="{{ route('admin.drivers.index') }}" class="dropdown-item {{ Route::is('admin.drivers.index') ? 'active' : '' }}">Quản lý tài xế</a>
-{{--                                    <a href="{{ route('admin.banks.edit') }}" class="dropdown-item {{ Route::is('admin.banks.edit') ? 'active' : '' }}">Tài khoản thanh toán</a>--}}
-                                    <a href="{{ route('admin.areanew.index') }}" class="dropdown-item {{ Route::is('admin.areanew.index') ? 'active' : '' }}">Quản lý Khu Vực</a>
+                                    <a href="{{ route('admin.bookings.index') }}" class="dropdown-item {{ Route::is('user.tours') ? 'active' : '' }}">Quản lý đặt tour</a>
+                                    <a href="{{ route('admin.areanew.index') }}" class="dropdown-item {{ Route::is('admin.areanew.index') ? 'active' : '' }}">Quản lý khu vực</a>
                                     <a href="{{ route('admin.statistics.index') }}" class="dropdown-item {{ Route::is('admin.statistics.index') ? 'active' : '' }}">Thống kê</a>
+                                    <a href="{{ route('admin.logout') }}" class="dropdown-item {{ Route::is('admin.logout') ? 'active' : '' }}">Đăng xuất</a>
                                 @else
                                     <a href="{{ route('user.tours') }}" class="dropdown-item {{ Route::is('user.tours') ? 'active' : '' }}">Tours đã đặt</a>
+                                    <a href="{{ route('user.logout') }}" class="dropdown-item {{ Route::is('user.logout') ? 'active' : '' }}">Đăng xuất</a>
                                 @endif
-                                <a href="{{ route('user.logout') }}" class="dropdown-item {{ Route::is('user.logout') ? 'active' : '' }}">Đăng xuất</a>
                             </div>
                         </div>
                     @endif
@@ -94,6 +105,23 @@
 <!-- Navbar End -->
 
 @yield('content')
+<script>
+    $(document).ready(function() {
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+
+        @if(session('success'))
+            toastr.success('{{ session('success') }}');
+        @endif
+
+        @if(session('error'))
+            toastr.error('{{ session('error') }}');
+        @endif
+    });
+</script>
 
 
 <!-- Footer Start -->
@@ -104,13 +132,6 @@
                 <h1 class="text-primary"><span class="text-white">TRAVEL</span>.PRO</h1>
             </a>
             <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-            <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-            <div class="d-flex justify-content-start">
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-            </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
@@ -140,13 +161,12 @@
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
             <p><i class="fa fa-map-marker-alt mr-2"></i>Đại Học Thuỷ Lợi, Đống Đa, Hà Nội</p>
             <p><i class="fa fa-phone-alt mr-2"></i>0987 368 999</p>
-            <p><i class="fa fa-envelope mr-2"></i>huyodin@gamil.com</p>
+            <p><i class="fa fa-envelope mr-2"></i>huyodin@gmail.com</p>
             <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Newsletter</h6>
             <div class="w-100">
                 <div class="input-group">
-                    <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
                     <div class="input-group-append">
-                        <button class="btn btn-primary px-3">Sign Up</button>
+                        <a href="{{route('register')}}" class="btn btn-primary px-3">Sign Up</a>
                     </div>
                 </div>
             </div>
@@ -160,7 +180,6 @@
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 <!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset(env('URL_MAIN')."/lib/easing/easing.min.js")}}"></script>
 <script src="{{asset(env('URL_MAIN')."/lib/owlcarousel/owl.carousel.min.js")}}"></script>
@@ -171,5 +190,6 @@
 <!-- Template Javascript -->
 <script src="{{asset(env('URL_MAIN')."/js/main.js")}}"></script>
 </body>
+@yield('script')
 
 </html>

@@ -94,10 +94,10 @@ class TourController
                     ]);
                 }
             }
+            return redirect()->route('admin.tour.index')->with('success', 'Tour đã được tạo thành công');
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Có lỗi xảy ra: ' . $e->getMessage());
         }
-        return redirect()->route('tour.index')->with('success', 'Tour đã được tạo thành công');
     }
 
     /**
@@ -172,12 +172,12 @@ class TourController
             $endDates = $request->input('end_date');
 
             for ($i = 0; $i < count($startDates); $i++) {
-                $tour->tourDates()->create([
+                TourDate::create([
+                    'tour_id' => $tour->id,
                     'start_date' => $startDates[$i],
                     'end_date' => $endDates[$i],
                 ]);
             }
-
 
             $imageArrs = $request->images;
             $oldTourImageIds = $tour->images()->pluck('id')->toArray();
@@ -219,7 +219,7 @@ class TourController
             dd($e->getMessage());
         }
 
-        return redirect()->route('tour.index')->with('success', 'Tour đã được cập nhật thành công');
+        return redirect()->route('admin.tour.index')->with('success', 'Tour đã được cập nhật thành công');
     }
 
     /**
@@ -235,10 +235,10 @@ class TourController
             $tour->delete();
             $tour->bookings()->delete();
             DB::commit();
-            return redirect()->route('tour.index')->with('success', 'Xóa thành công tour');
+            return redirect()->route('admin.tour.index')->with('success', 'Xóa thành công tour');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->route('tour.index')->with('error', 'Xóa tour thất bại');
+            return redirect()->route('admin.tour.index')->with('error', 'Xóa tour thất bại');
         }
     }
 }

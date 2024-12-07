@@ -37,7 +37,7 @@ class TourGuideController
 
         TourGuide::create($validated);
 
-        return redirect()->route('tour_guides.index')->with('success', 'Hướng dẫn viên đã được thêm thành công.');
+        return redirect()->route('admin.tour_guides.index')->with('success', 'Hướng dẫn viên đã được thêm thành công.');
     }
 
     public function edit($id)
@@ -67,7 +67,7 @@ class TourGuideController
 
         $tourGuide->update($validated);
 
-        return redirect()->route('tour_guides.index', $tourGuide)->with('success', 'Thông tin hướng dẫn viên đã được cập nhật thành công.');
+        return redirect()->route('admin.tour_guides.index', $tourGuide)->with('success', 'Thông tin hướng dẫn viên đã được cập nhật thành công.');
     }
 
     public function destroy($id)
@@ -80,6 +80,6 @@ class TourGuideController
 
         $tourGuide->delete();
 
-        return redirect()->route('tour_guides.index')->with('success', 'Hướng dẫn viên đã được xóa thành công.');
+        return redirect()->route('admin.tour_guides.index')->with('success', 'Hướng dẫn viên đã được xóa thành công.');
     }
 }

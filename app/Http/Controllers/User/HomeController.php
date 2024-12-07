@@ -2,49 +2,23 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
+use App\Models\Area;
 use Illuminate\Routing\Controller;
 
 class HomeController extends Controller
 {
     public function index() {
-        return view('user.index');
+        $areasPreview = Area::withCount('tours')
+            ->orderByDesc('tours_count')
+            ->take(6)
+            ->get();
+        $areas = Area::all();
+        $data = [
+           'areasPreview' => $areasPreview,
+           'areas' => $areas
+        ];
+        return view('user.index')->with('data', $data);
     }
 
-    public function about() {
-        return view('user.about');
-    }
-
-    public function service() {
-        return view('user.service');
-    }
-
-    public function package() {
-        return view('user.package');
-    }
-
-    public function blog() {
-        return view('user.blog');
-    }
-
-    public function single() {
-        return view('user.single');
-    }
-
-    public function guide() {
-        return view('user.guide');
-    }
-
-    public function testimonial() {
-        return view('user.testimonial');
-    }
-
-    public function contact() {
-        return view('user.contact');
-    }
-
-    public function destination() {
-        return view('user.destination');
-    }
 }
 

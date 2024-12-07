@@ -33,7 +33,7 @@ class AreaNewController
             'thumbnail' => $thumbnailPath,
         ]);
 
-        return redirect()->route('areanew.index')->with('success', 'Khu vực đã được tạo thành công.');
+        return redirect()->route('admin.areanew.index')->with('success', 'Khu vực đã được tạo thành công.');
     }
 
     public function edit($id)
@@ -72,14 +72,12 @@ class AreaNewController
             $area->update($data);
 
             // Chuyển hướng về trang danh sách với thông báo thành công
-            return redirect()->route('areanew.index')->with('success', 'Khu vực đã được cập nhật thành công.');
+            return redirect()->route('admin.areanew.index')->with('success', 'Khu vực đã được cập nhật thành công.');
         } catch (\Exception $e) {
-            // Ghi log lỗi nếu cần
-            dd($e);
             \Log::error('Error updating area: ' . $e->getMessage());
 
             // Chuyển hướng về trang danh sách với thông báo lỗi
-            return redirect()->route('areanew.index')->with('error', 'Đã xảy ra lỗi khi cập nhật khu vực.');
+            return redirect()->route('admin.areanew.index')->with('error', 'Đã xảy ra lỗi khi cập nhật khu vực.');
         }
     }
 
@@ -91,6 +89,6 @@ class AreaNewController
 
         $area->delete();
 
-        return redirect()->route('areanew.index')->with('success', 'Khu vực đã được xóa thành công.');
+        return redirect()->route('admin.areanew.index')->with('success', 'Khu vực đã được xóa thành công.');
     }
 }
