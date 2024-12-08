@@ -100,7 +100,7 @@
             <div class="card-body">
                 <h5 class="card-title">Tên: {{ $hotel->name }}</h5>
                 <p class="card-text">Địa chỉ: {{ $hotel->address }}</p>
-                <p class="card-text">Đánh giá: {{ $hotel->stars }} <i class="fa-solid fa-star" style="color: yellow;"></i></p>
+                <p class="card-text">Đánh giá: {{ $hotel->stars }} <i class="fa fa-star" style="color: yellow;"></i></p>
                 <p class="card-text">Điện thoại: {{ $hotel->phone }}</p>
                 <p class="card-text">Mô tả: {{ $hotel->description }}</p>
             </div>

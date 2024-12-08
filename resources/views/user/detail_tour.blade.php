@@ -102,7 +102,7 @@
             <div class="card-body">
                 <h5 class="card-title">Tên: {{ $data['tour']->hotel->name }}</h5>
                 <p class="card-text">Địa chỉ: {{ $data['tour']->hotel->address }}</p>
-                <p class="card-text">Đánh giá: {{ $data['tour']->hotel->stars }} <i class="fa-solid fa-star" style="color: yellow;"></i></p>
+                <p class="card-text">Đánh giá: {{ $data['tour']->hotel->stars }} <i class="fa fa-star" style="color: yellow;"></i></p>
                 <p class="card-text">Điện thoại: {{ $data['tour']->hotel->phone }}</p>
                 <p class="card-text">Mô tả: {{ $data['tour']->hotel->description }}</p>
             </div>

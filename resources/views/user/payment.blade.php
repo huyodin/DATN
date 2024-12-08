@@ -29,9 +29,9 @@
                 <img src="{{ asset('img/QRcode.jpg') }}" alt="QR Code" class="img-fluid mb-5" style="max-width: 200px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 <div>
                     <p class="font-weight-bold text-dark mb-3" style="font-size: 1.2rem; line-height: 1.6;">Thông tin chuyển khoản:</p>
-                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Ngân hàng:</strong> <span class="text-success">ABC</span></p>
-                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Số tài khoản:</strong> 123456789</p>
-                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Chủ tài khoản:</strong> 123123123</p>
+                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Ngân hàng:</strong> <span class="text-success">VP Bank</span></p>
+                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Số tài khoản:</strong> 227239271</p>
+                    <p class="mb-3" style="font-size: 1.1rem; line-height: 1.6;"><strong>Chủ tài khoản:</strong> Tran Quang Huy</p>
                     <p class="mb-4" style="font-size: 1.1rem; line-height: 1.6;"><strong>Nội dung chuyển tiền:</strong> <span class="text-primary">{{ $booking->order_code }}</span></p>
                 </div>
             </div>

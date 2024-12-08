@@ -22,7 +22,7 @@
                 <tr>
                     <td>{{ $hotel->name }}</td>
                     <td>{{ $hotel->address ?? 'N/A' }}</td>
-                    <td>{{ $hotel->stars ?? 'N/A' }} <i class="fa-solid fa-star" style="color: rgb(255, 242, 0)"></i></td>
+                    <td>{{ $hotel->stars ?? 'N/A' }} <i class="fa fa-star" style="color: rgb(255, 242, 0)"></i></td>
                     <td>{{ $hotel->phone ?? 'N/A' }}</td>
                     <td>{{ $hotel->description ?? 'N/A' }}</td>
                     <td style="text-align: left; white-space: nowrap;">
