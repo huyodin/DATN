@@ -9,7 +9,7 @@
             </div>
         @else
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered">
                     <thead class="table-dark text-center">
                     <tr>
                         <th>Tour</th>

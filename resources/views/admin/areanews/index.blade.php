@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-end mb-3">
             <a href="{{ route('admin.areanew.create') }}" class="btn btn-tour text-white" style="background-color: #007bff;">Thêm khu vực mới</a>
         </div>
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered">
             <thead class="bg-light text-center">
             <tr>
                 <th class="w-75">Tên khu vực</th>

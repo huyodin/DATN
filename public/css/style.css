@@ -9925,8 +9925,3 @@ h6,
     background-color: #3498db;
 }
 
-th {
-    pointer-events: none; /* Ngăn mọi hành động tương tác chuột */
-    background-color: inherit; /* Đảm bảo không thay đổi màu khi hover */
-}
-
