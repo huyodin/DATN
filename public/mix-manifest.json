@@ -1,7 +1,6 @@
 {
     "/js/main.js": "/js/main.js?id=c60a4c7ba42362ee90e3e2a91ed9c579",
-    "/css/style.css": "/css/style.css?id=b1c13df0db5d0c2037b99251348f2993",
-    "/img/QR.jpg": "/img/QR.jpg?id=7100f0ec880742d81012a93f50066c30",
+    "/css/style.css": "/css/style.css?id=c0d15763c44e8bc971812e1f49045b51",
     "/img/QRcode.jpg": "/img/QRcode.jpg?id=b81de3dce18e6c2cc81f1dae6a1bd9dc",
     "/img/about-1.jpg": "/img/about-1.jpg?id=4d152868d5a6d17c2d4431b5bba59335",
     "/img/about-2.jpg": "/img/about-2.jpg?id=0375575ad350a02cffe445152f43d121",
@@ -63,5 +62,7 @@
     "/lib/tempusdominus/js/moment-timezone.min.js": "/lib/tempusdominus/js/moment-timezone.min.js?id=1a771c7f06717ed315ff7e6bad2d7058",
     "/lib/tempusdominus/js/moment.min.js": "/lib/tempusdominus/js/moment.min.js?id=a79a8710a3517e497846aca9179f8d81",
     "/lib/tempusdominus/js/tempusdominus-bootstrap-4.js": "/lib/tempusdominus/js/tempusdominus-bootstrap-4.js?id=cde9cc849017e49168ee36748dbf3963",
-    "/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js": "/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js?id=ac4d4d755b70ee1a00f7fc78cc85bc05"
+    "/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js": "/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js?id=ac4d4d755b70ee1a00f7fc78cc85bc05",
+    "/airline_ticket/Bamboo_Airways.png": "/airline_ticket/Bamboo_Airways.png?id=21182ad04c8f35ed0d6021071995464b",
+    "/airline_ticket/Vietnam_Airlines.png": "/airline_ticket/Vietnam_Airlines.png?id=8f1d7e8d3f356ca0107f10a9640772cc"
 }

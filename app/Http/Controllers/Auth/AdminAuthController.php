@@ -39,6 +39,6 @@ class AdminAuthController
         Auth::logout();
 
         // Redirect to the login page
-        return redirect()->route('admin.login');
+        return redirect()->route('admin.login')->with('success', 'Đăng xuất thành công !!');
     }
 }

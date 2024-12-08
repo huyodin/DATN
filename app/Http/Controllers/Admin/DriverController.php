@@ -35,7 +35,7 @@ class DriverController
 
         Driver::create($validated);
 
-        return redirect()->route('drivers.index')->with('success', 'Tài xế đã được tạo thành công');
+        return redirect()->route('admin.drivers.index')->with('success', 'Tài xế đã được tạo thành công');
     }
 
     // Display the specified resource
@@ -67,13 +67,13 @@ class DriverController
 
         $driver->update($validated);
 
-        return redirect()->route('drivers.index')->with('success', 'Tài xế đã được cập nhật thành công');
+        return redirect()->route('admin.drivers.index')->with('success', 'Tài xế đã được cập nhật thành công');
     }
 
     // Remove the specified resource from storage
     public function destroy(Driver $driver)
     {
         $driver->delete();
-        return redirect()->route('drivers.index')->with('success', 'Tài xế đã được xóa thành công');
+        return redirect()->route('admin.drivers.index')->with('success', 'Tài xế đã được xóa thành công');
     }
 }

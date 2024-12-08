@@ -36,7 +36,7 @@ class VehicleController
 
         Vehicle::create($request->all());
 
-        return redirect()->route('vehicles.index')
+        return redirect()->route('admin.vehicles.index')
                          ->with('success', 'Phương tiện đã được tạo thành công');
     }
 
@@ -67,7 +67,7 @@ class VehicleController
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->update($request->all());
 
-        return redirect()->route('vehicles.index')
+        return redirect()->route('admin.vehicles.index')
                          ->with('success', 'Phương tiện đã được cập nhật thành công');
     }
 
@@ -76,7 +76,7 @@ class VehicleController
         $vehicle = Vehicle::findOrFail($id);
         $vehicle->delete();
 
-        return redirect()->route('vehicles.index')
+        return redirect()->route('admin.vehicles.index')
                          ->with('success', 'Phương tiện đã được xóa thành công');
     }
 }

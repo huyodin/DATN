@@ -1,11 +1,11 @@
 @extends('layout.app_user')
 
 @section('content')
-<div class="container-lg mt-5 bg-white p-4">
-    <h1 class="text-center">Quản lý Tour</h1>
-    <a href="{{ route('admin.tour.create') }}" class="btn btn-tour mb-3">Tạo Tour</a>
-    <table class="table table-striped">
-        <thead>
+    <div class="container-lg mt-5 bg-white p-4">
+        <h1 class="text-center text-primary mb-4">Quản lý Tour</h1>
+        <a href="{{ route('admin.tour.create') }}" class="btn btn-primary mb-3">Tạo Tour</a>
+        <table class="table table-striped">
+            <thead>
             <tr>
                 <th>STT</th>
                 <th>Tên Tour</th>
@@ -19,8 +19,8 @@
                 <th>Số lượng người tham gia</th>
                 <th>Hành động</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             @foreach ($tours as $index => $tour)
                 <tr>
                     <td>{{ $index + 1 }}</td>
@@ -79,33 +79,13 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-</div>
-<script>
-    @if(session('error'))
-        toastr.error("{{ session('error') }}");
-        <?php session()->forget('error'); ?>
-    @endif
-    @if(session('success'))
-        toastr.success("{{ session('success') }}");
-        <?php session()->forget('success'); ?>
-    @endif
-    $(document).ready(function() {
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-                toastr.error('{{ $error }}');
-            @endforeach
-        @endif
-
-        @if(session('success'))
-            toastr.success('{{ session('success') }}');
-        @endif
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        @foreach($tours as $index => $tour)
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @foreach($tours as $index => $tour)
             document.getElementById(`showDeleteModal{{ $index }}`).addEventListener('click', function() {
                 $(`#deleteConfirmationModal{{ $index }}`).modal('show');
             });
@@ -117,7 +97,7 @@
             document.querySelector(`#close{{ $index }}`).addEventListener('click', function() {
                 $(`#deleteConfirmationModal{{ $index }}`).modal('hide');
             });
-        @endforeach
-    });
-</script>
+            @endforeach
+        });
+    </script>
 @endsection

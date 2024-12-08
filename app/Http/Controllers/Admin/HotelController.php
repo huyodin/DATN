@@ -41,7 +41,7 @@ class HotelController
 
         Hotel::create($request->all());
 
-        return redirect()->route('hotels.index')->with('success', 'Hotel created successfully.');
+        return redirect()->route('admin.hotels.index')->with('success', 'Hotel created successfully.');
     }
 
     /**
@@ -80,7 +80,7 @@ class HotelController
         $hotel->update($validated);
 
         // Chuyển hướng về trang chi tiết với thông báo thành công
-        return redirect()->route('hotels.index', $hotel)->with('success', 'Khách sạn đã được cập nhật thành công.');
+        return redirect()->route('admin.hotels.index', $hotel)->with('success', 'Khách sạn đã được cập nhật thành công.');
     }
 
     /**
@@ -91,6 +91,6 @@ class HotelController
         $hotel = Hotel::findOrFail($id);
         $hotel->delete();
 
-        return redirect()->route('hotels.index')->with('success', 'Khách sạn đã được xóa thành công.');
+        return redirect()->route('admin.hotels.index')->with('success', 'Khách sạn đã được xóa thành công.');
     }
 }

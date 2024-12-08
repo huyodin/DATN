@@ -1,47 +1,60 @@
 @extends('layout.app_user')
 
 @section('content')
-<div class="container-lg mt-5 bg-white p-4">
-    <h1 class="mb-4">Chỉnh Sửa Tài Xế</h1>
-    <form action="{{ route('admin.drivers.update', $driver->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label for="name">Tên</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $driver->name }}" required>
-        </div>
-        <div class="form-group">
-            <label for="avatar">Avatar</label>
-            <input type="file" class="form-control" id="avatar" name="avatar" onchange="previewAvatar(event)">
-            <div class="mt-2">
-                @if($driver->avatar)
-                    <img id="avatarPreview" src="{{ asset('storage/' . $driver->avatar) }}" alt="Avatar" width="100">
-                @else
-                    <img id="avatarPreview" src="" alt="Avatar Preview" width="100" style="display: none;">
-                @endif
+    <div class="container-lg mt-5 bg-white p-4 shadow-sm rounded">
+        <h1 class="text-center text-primary mb-4">Chỉnh Sửa Tài Xế</h1>
+        <form action="{{ route('admin.drivers.update', $driver->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="mt-4 mb-4">
+                <a href="{{ route('admin.drivers.index') }}" class="btn btn-secondary px-4 py-2">Quay lại danh sách</a>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="phone">Điện Thoại</label>
-            <input type="text" class="form-control" id="phone" name="phone" value="{{ $driver->phone }}" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Cập Nhật</button>
-    </form>
-</div>
+            <!-- Tên -->
+            <div class="form-group mb-3">
+                <label for="name" class="form-label">Tên</label>
+                <input type="text" class="form-control px-3 py-2" id="name" name="name" value="{{ $driver->name }}" required>
+            </div>
+
+            <!-- Avatar -->
+            <div class="form-group mb-3">
+                <label for="avatar" class="form-label">Avatar</label>
+                <input type="file" class="form-control px-3 py-2" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar(event)">
+                <div class="mt-3">
+                    @if($driver->avatar)
+                        <img id="avatarPreview" src="{{ asset('storage/' . $driver->avatar) }}" alt="Avatar" class="rounded-circle border" width="100">
+                    @else
+                        <img id="avatarPreview" src="" alt="Avatar Preview" class="rounded-circle border" width="100" style="display: none;">
+                    @endif
+                </div>
+            </div>
+
+            <!-- Điện Thoại -->
+            <div class="form-group mb-4">
+                <label for="phone" class="form-label">Điện Thoại</label>
+                <input type="text" class="form-control px-3 py-2" id="phone" name="phone" value="{{ $driver->phone }}" required>
+            </div>
+
+            <!-- Nút Cập Nhật -->
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-4 py-2">Cập Nhật</button>
+            </div>
+        </form>
+    </div>
 @endsection
 
 @section('script')
-<script>
-    function previewAvatar(event) {
-        var input = event.target;
-        var reader = new FileReader();
-        reader.onload = function(){
-            var dataURL = reader.result;
-            var output = document.getElementById('avatarPreview');
-            output.src = dataURL;
-            output.style.display = 'block';
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-</script>
+    <script>
+        function previewAvatar(event) {
+            const input = event.target;
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                const output = document.getElementById('avatarPreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    </script>
 @endsection

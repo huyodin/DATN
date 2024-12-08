@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/airline-tickets', [\App\Http\Controllers\User\AirlineTicketsController::class, 'getAPI'])->name('getAPI.airline_tickets');
+Route::get('/hotels', [\App\Http\Controllers\User\HotelController::class, 'getAPI'])->name('getAPI.hotels');
+
