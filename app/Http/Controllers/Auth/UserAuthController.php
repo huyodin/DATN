@@ -20,22 +20,21 @@ class UserAuthController
     }
 
     public function action(Request $request) {
-        // Validate the incoming request
+        // Xác thực dữ liệu đầu vào
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
-        // Attempt to authenticate the user
+        // Xác thực người dùng
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password,
         ])) {
-            // Authentication passed, redirect to a specific page (e.g., dashboard)
             return redirect()->route('index');
         }
 
-        // Authentication failed, redirect back with an error message
+        // Xác thực lỗi
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
@@ -43,10 +42,10 @@ class UserAuthController
 
     public function logout()
     {
-        // Log out the user
+        // Đăng xuất
         Auth::logout();
 
-        // Redirect to the login page
+        // Chuyển người dùng đến màn login
         return redirect()->route('login')->with('success', 'Đăng xuất thành công !!');
     }
 
