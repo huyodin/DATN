@@ -18,7 +18,7 @@ class HotelController
             $search = $request->input('name', '');
 
             $hotels = Hotel::where('name', 'like', '%' . $search . '%')
-                        ->paginate(1);
+                        ->paginate(6);
 
             return response()->json(['success' => true, 'data' => $hotels]);
         } catch (\Exception $exception) {

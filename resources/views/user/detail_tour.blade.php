@@ -92,6 +92,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ $data['tour']->area->name }}</h5>
+                <p class="card-text">{{ $data['tour']->description }}</p>
             </div>
         </div>
 

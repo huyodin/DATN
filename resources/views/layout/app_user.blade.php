@@ -88,6 +88,7 @@
                                     <a href="{{ route('admin.drivers.index') }}" class="dropdown-item {{ Route::is('admin.drivers.index') ? 'active' : '' }}">Quản lý tài xế</a>
                                     <a href="{{ route('admin.bookings.index') }}" class="dropdown-item {{ Route::is('user.tours') ? 'active' : '' }}">Quản lý đặt tour</a>
                                     <a href="{{ route('admin.areanew.index') }}" class="dropdown-item {{ Route::is('admin.areanew.index') ? 'active' : '' }}">Quản lý khu vực</a>
+                                    <a href="{{ route('admin.users.index') }}" class="dropdown-item {{ Route::is('admin.users.index') ? 'active' : '' }}">Quản lý người dùng</a>
                                     <a href="{{ route('admin.statistics.index') }}" class="dropdown-item {{ Route::is('admin.statistics.index') ? 'active' : '' }}">Thống kê</a>
                                     <a href="{{ route('admin.logout') }}" class="dropdown-item {{ Route::is('admin.logout') ? 'active' : '' }}">Đăng xuất</a>
                                 @else

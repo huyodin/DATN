@@ -49,7 +49,7 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tours</h6>
-                <h1>Các tours du lịch hiện tại của chúng tôi</h1>
+                <h1>Các khách sạn hiện tại của chúng tôi</h1>
             </div>
             <div class="row" id="hotels">
 

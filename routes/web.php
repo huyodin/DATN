@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\User\AirlineTicketsController;
 use App\Http\Controllers\User\HotelController as UserHotelController;
 use App\Http\Controllers\User\TourController as UserTourController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'check.admin'])->prefix('admin')->name('admin.')->gro
     Route::resource('areanew', AreaNewController::class);
     Route::resource('/tour', AdminTourController::class);
     Route::resource('bookings', BookingController::class);
+    Route::resource('users', AdminUserController::class);
 
     Route::post('bookings/update-payment-status', [BookingController::class, 'updatePaymentStatus'])->name('bookings.updatePaymentStatus');
 
