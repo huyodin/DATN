@@ -68,7 +68,7 @@
                 <div class="navbar-nav ml-auto py-0">
                     <a href="{{ route('index') }}" class="nav-item nav-link {{ Route::is('index') ? 'active' : '' }}">Trang chủ</a>
                     <a href="{{ route('tours') }}" class="nav-item nav-link {{ Route::is('tours') ? 'active' : '' }}">Tours</a>
-                    <a href="{{ route('airline_tickets') }}" class="nav-item nav-link {{ Route::is('airline_tickets') ? 'active' : '' }}">Vé máy bay</a>
+<!--                     <a href="{{ route('airline_tickets') }}" class="nav-item nav-link {{ Route::is('airline_tickets') ? 'active' : '' }}">Vé máy bay</a> -->
                     <a href="{{ route('hotels') }}" class="nav-item nav-link {{ Route::is('hotels') ? 'active' : '' }}">Khách sạn</a>
                     @if (!Auth::check())
                         <div class="d-flex align-items-center">
