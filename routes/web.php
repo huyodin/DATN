@@ -40,7 +40,7 @@ Route::post('/change-password/action', [UserAuthController::class, 'ChangePasswo
 Route::get('/tours', [UserTourController::class, 'tours'])->name('tours');
 Route::get('/tours/{id}', [UserTourController::class, 'detailTour'])->name('detailTour');
 Route::post('/tours/payment', [UserTourController::class, 'payment'])->name('payment');
-Route::get('/airline-tickets', [AirlineTicketsController::class, 'AirlineTickets'])->name('airline_tickets');
+// Route::get('/airline-tickets', [AirlineTicketsController::class, 'AirlineTickets'])->name('airline_tickets');
 Route::get('/hotels', [UserHotelController::class, 'hotels'])->name('hotels');
 Route::get('/login', [UserAuthController::class, 'login'])->name('login');
 Route::get('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
